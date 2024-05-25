@@ -7,9 +7,6 @@ export type TVShowDocument = TVShow & Document;
 @Schema()
 export class TVShow {
   @Prop({ required: true })
-  id: string;
-
-  @Prop({ required: true })
   title: string;
 
   @Prop({ required: true })

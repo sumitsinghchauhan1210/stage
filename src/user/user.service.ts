@@ -55,7 +55,8 @@ export class UserService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
-
+    console.log('contentId', contentId);
+    console.log('user', user);
     user.myList = user.myList.filter((item) => item.contentId !== contentId);
     await user.save();
     return user;
@@ -78,5 +79,15 @@ export class UserService {
       currentPage: page,
       totalPages: Math.ceil(user.myList.length / limit),
     };
+  }
+  async listUsers(page: number, perPage: number): Promise<any> {
+    const totalUsers = await this.userModel.countDocuments();
+    const users = await this.userModel
+      .find()
+      .skip((page - 1) * perPage)
+      .limit(perPage)
+      .exec();
+
+    return { total: totalUsers, page, perPage, data: users };
   }
 }

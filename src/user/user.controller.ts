@@ -8,7 +8,9 @@ import {
   Body,
 } from '@nestjs/common';
 import { UserService } from './user.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Users')
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -27,6 +29,7 @@ export class UserController {
     @Param('userId') userId: string,
     @Param('contentId') contentId: string,
   ) {
+    console.log({ userId, contentId });
     return this.userService.removeFromList(userId, contentId);
   }
 
@@ -37,5 +40,13 @@ export class UserController {
     @Query('limit') limit: number = 10,
   ) {
     return this.userService.listMyItems(userId, page, limit);
+  }
+
+  @Get('/')
+  async listUsers(
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+  ) {
+    return this.userService.listUsers(page, limit);
   }
 }
