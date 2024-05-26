@@ -22,7 +22,6 @@ docker-compose up --build
 
 The application is deployed and accessible at the following URLs:
 
-Application URL: http://13.201.59.46:3000
 Swagger Documentation: http://13.201.59.46:3000/api
 
 ## API Endpoints
