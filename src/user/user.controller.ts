@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { ApiTags } from '@nestjs/swagger';
+import { AddToListDTO } from './dto/add-to-list.dto';
 
 @ApiTags('Users')
 @Controller('users')
@@ -18,10 +19,13 @@ export class UserController {
   @Post(':userId/list')
   async addToList(
     @Param('userId') userId: string,
-    @Body('contentId') contentId: string,
-    @Body('contentType') contentType: string,
+    @Body() addToListData: AddToListDTO,
   ) {
-    return this.userService.addToList(userId, contentId, contentType);
+    return this.userService.addToList(
+      userId,
+      addToListData.contentId,
+      addToListData.contentType,
+    );
   }
 
   @Delete(':userId/list/:contentId')
