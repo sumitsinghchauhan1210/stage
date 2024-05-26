@@ -19,7 +19,7 @@ async function bootstrap() {
       'Have all the routes documentation for user, movies and tvshows',
     )
     .setVersion('1.0')
-    .addServer('http://localhost:3000', 'Default Server')
+    .addServer('http://13.201.59.46:3000', 'Default Server')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
