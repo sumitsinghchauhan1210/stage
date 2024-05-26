@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { Episode, EpisodeSchema } from './episode.schema';
+import { genre } from '../utils/constants';
 
 export type TVShowDocument = TVShow & Document;
 
@@ -16,15 +17,7 @@ export class TVShow {
     type: [
       {
         type: String,
-        enum: [
-          'Action',
-          'Comedy',
-          'Drama',
-          'Fantasy',
-          'Horror',
-          'Romance',
-          'SciFi',
-        ],
+        enum: genre,
       },
     ],
   })

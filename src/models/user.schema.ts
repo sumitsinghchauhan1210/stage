@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 export type UserDocument = User & Document;
+import { genre } from '../utils/constants';
 
 @Schema()
 export class User {
@@ -11,15 +12,7 @@ export class User {
     type: [
       {
         type: String,
-        enum: [
-          'Action',
-          'Comedy',
-          'Drama',
-          'Fantasy',
-          'Horror',
-          'Romance',
-          'SciFi',
-        ],
+        enum: genre,
       },
     ],
   })
@@ -29,15 +22,7 @@ export class User {
     type: [
       {
         type: String,
-        enum: [
-          'Action',
-          'Comedy',
-          'Drama',
-          'Fantasy',
-          'Horror',
-          'Romance',
-          'SciFi',
-        ],
+        enum: genre,
       },
     ],
   })

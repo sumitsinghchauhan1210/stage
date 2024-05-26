@@ -3,15 +3,15 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './user/user.module';
 import { MoviesModule } from './movies/movies.module';
 import { TvshowsModule } from './tvshows/tvshows.module';
+import { SeedService } from './seed/seed.service';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://sumitchauhan:sumit123@mymongocluster.8m4b817.mongodb.net/stage?retryWrites=true&w=majority&appName=MyMongoCluster',
-    ),
+    MongooseModule.forRoot('mongodb://mongodb:27017/stagedb'),
     UserModule,
     MoviesModule,
     TvshowsModule,
   ],
+  providers: [SeedService],
 })
 export class AppModule {}

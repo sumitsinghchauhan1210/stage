@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { genre } from '../utils/constants';
 
 export type MovieDocument = Movie & Document;
 
@@ -15,15 +16,7 @@ export class Movie {
     type: [
       {
         type: String,
-        enum: [
-          'Action',
-          'Comedy',
-          'Drama',
-          'Fantasy',
-          'Horror',
-          'Romance',
-          'SciFi',
-        ],
+        enum: genre,
       },
     ],
   })
